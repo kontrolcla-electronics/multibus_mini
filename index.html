@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MultiBus Mini Channels</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" style="display:none;">
+    <nav class="navbar">
+      <ul>
+        <li><h3>MultiBus Mini <span id="navbar_model"></span></h3></li>
+      </ul>
+      <ul>
+        <li><h3 id="navbar_channels" ><a href="channels.html" class="selected">Channels</a></h3></li>
+        <li><h3 id="navbar_wifi" style="display:none"><a href="wifi.html">Wifi</a></h3></li>
+        <li><h3 id="navbar_nfc" style="display:none"><a href="nfc.html">Nfc</a></h3></li>
+        <li><h3 id="navbar_ir" style="display:none" ><a href="ir_test.html">Ir Learning</a></h3></li>
+      </ul>
+    </nav>
+    <h3 id="label_load_data" class="label_w"></h3>
+    <!--INICI GRIDS ALL-->
+    <div id="grids_all" style="display:none;">
+      <!--Channels titles-->
+      <div class="grid_channels" style="margin-top: 10px">
+        <h3 class="title">Channel 0</h3>
+        <h3 class="title">Channel 1</h3>
+      </div>
+      <!--Bus Select-->
+      <div class="grid_channels">
+        <!--Chn 0-->
+        <div class="grid_channels grid_channel">
+          <!--SECCIO 0 LEFT-->
+          <div>
+            <div class="input_gen">
+              <div class="input_label input_label_chn_left">Bus Type &nbsp;<i>( pins A - B )</i></div>
+              <select class="input_data input_data_chn_left" id="chn_0_bus_option">
+                <option value="0">Off</option>
+                <option value="1">I2c &nbsp;( sda - scl )</option>
+                <option value="2">Uart 0 &nbsp;( rx - tx )</option>
+                <option value="3">Gpio &nbsp;( in - in )</option>
+                <option value="4">Gpio &nbsp;( out - out )</option>
+                <option value="5">Gpio &nbsp;( in - Out )</option>
+              </select>
+            </div>
+            <div class="input_gen">
+              <div class="input_label input_label_chn_left">Bus Speed</div>
+              <select class="input_data input_data_chn_left" id="chn_0_bus_speed">
+                <!--empty-->
+              </select>
+            </div>
+            <div class="grid_cfg_4">
+              <div class="checkbox_group" style="margin-left: 14px">
+                <input type="checkbox" id="chn_0_powered">
+                <label class="checkbox_label" for="chn_0_powered">Power</label>
+              </div>
+              <div class="led" id="chn_0_powered_current" style="margin-left: -40px; margin-top: 31px;"></div>
+              <div class="checkbox_group" style="margin-left: 14px">
+                <input type="checkbox" id="chn_0_booster" class="booster">
+                <label class="checkbox_label" id="chn_0_booster_label" for="chn_0_booster">I2c Booster</label>
+              </div>
+              <div class="led" id="chn_0_booster_current" style="margin-left: -4px; margin-top: 31px;"></div>
+            </div>
+          </div>
+          <!--SECCIO 0 RIGHT-->
+          <div>
+            <div class="input_gen">
+              <div class="input_label input_label_chn_right">I2c Auto Poll</div>
+              <select class="input_data input_data_chn_right" id="chn_0_poll_option">
+                <option value="0">None</option>
+                <option value="1">PCF8574 8bit</option>
+                <option value="2">PCF8575 16bit</option>
+                <option value="3">TCA9539 16bit</option>
+                <option value="4">MCP23008 8bit</option>
+                <option value="5">MCP23017 16bit</option>
+                <option value="6">MPR121 12x</option>
+              </select>
+            </div>
+            <div class="input_gen">
+              <div class="input_label input_label_chn_right">7bit Address</div>
+              <select class="input_data input_data_chn_right" id="chn_0_poll_address">
+                <!--empty-->
+              </select>
+            </div>
+            <div class="input_gen">
+              <div class="input_label input_label_chn_right">I/O Direction</div>
+              <input type="text" class="input_data input_data_chn_right" id="chn_0_poll_direction" maxlength="16">
+            </div>
+            <div id="chn_0_poll_direction_info" style="margin-left: 120px; color:grey; height:26px">
+            </div>
+          </div>
+        </div>
+        <!--Chn 1-->
+        <div class="grid_channels grid_channel">
+          <!--SECCIO 0 LEFT-->
+          <div>
+            <div class="input_gen">
+              <div class="input_label input_label_chn_left">Bus Type &nbsp;<i>( pins A - B )</i></div>
+              <select class="input_data input_data_chn_left" id="chn_1_bus_option">
+                <option value="0">Off</option>
+                <option value="1">I2c &nbsp;( sda - scl )</option>
+                <option value="2">Uart 1 &nbsp;( rx - tx )</option>
+                <option value="3">Gpio &nbsp;( in - in )</option>
+                <option value="4">Gpio &nbsp;( out - out )</option>
+                <option value="5">Gpio &nbsp;( in - Out )</option>
+              </select>
+            </div>
+            <div class="input_gen">
+              <div class="input_label input_label_chn_left">Bus Speed</div>
+              <select class="input_data input_data_chn_left" id="chn_1_bus_speed">
+                <!--empty-->
+              </select>
+            </div>
+            <div class="grid_cfg_4">
+              <div class="checkbox_group" style="margin-left: 14px">
+                <input type="checkbox" id="chn_1_powered">
+                <label class="checkbox_label" for="chn_1_powered">Power</label>
+              </div>
+              <div class="led" id="chn_1_powered_current" style="margin-left: -40px; margin-top: 31px;"></div>
+              <div class="checkbox_group" style="margin-left: 14px">
+                <input type="checkbox" id="chn_1_booster" class="booster">
+                <label class="checkbox_label" id="chn_1_booster_label" for="chn_1_booster">I2c Booster</label>
+              </div>
+              <div class="led" id="chn_1_booster_current" style="margin-left: -4px; margin-top: 31px;"></div>
+            </div>
+          </div>
+          <!--SECCIO 0 RIGHT-->
+          <div>
+            <div class="input_gen">
+              <div class="input_label input_label_chn_right">I2c Auto Poll</div>
+              <select class="input_data input_data_chn_right" id="chn_1_poll_option">
+                <option value="0">None</option>
+                <option value="1">PCF8574 8bit</option>
+                <option value="2">PCF8575 16bit</option>
+                <option value="3">TCA9539 16bit</option>
+                <option value="4">MCP23008 8bit</option>
+                <option value="5">MCP23017 16bit</option>
+                <option value="6">MPR121 12x</option>
+              </select>
+            </div>
+            <div class="input_gen">
+              <div class="input_label input_label_chn_right">7bit Address</div>
+              <select class="input_data input_data_chn_right" id="chn_1_poll_address">
+                <!--empty-->
+              </select>
+            </div>
+            <div class="input_gen">
+              <div class="input_label input_label_chn_right">I/O Direction</div>
+              <input type="text" class="input_data input_data_chn_right" id="chn_1_poll_direction" maxlength="16" value="11111111">
+            </div>
+            <div id="chn_1_poll_direction_info" style="margin-left: 120px; color:grey; height:26px">
+            </div>
+          </div>
+        </div>  
+      </div> 
+      <!--Subs titles-->
+      <div class="grid_channels" style="margin-top: 6px">
+        <h3 class="title title_2">Inputs Subscriptions</h3>
+        <h3 class="title title_2">Inputs Subscriptions</h3>
+      </div>
+      <!--Subs-1st line-->
+      <div class="grid_channels" style="margin-top: 16px">
+        <!--Chn 0 Ports-->
+        <div class="grid_sub" id="chn_0_subs_line_1" style="margin-left: 30px">
+          <div class="checkbox_group_sub">
+            <input type="checkbox" id="chn_0_sub_serial">
+            <label class="checkbox_label" for="chn_0_sub_serial">Serial Usb</label>
+          </div>
+          <div class="checkbox_group_sub">
+            <input type="checkbox" id="chn_0_sub_chn1">
+            <label class="checkbox_label" for="chn_0_sub_chn1">Uart 1</label>
+          </div>
+        </div>
+        <!--Chn 1 Ports-->
+        <div class="grid_sub" id="chn_1_subs_line_1" style="margin-left: 30px">
+          <div class="checkbox_group_sub">
+            <input type="checkbox" id="chn_1_sub_serial">
+            <label class="checkbox_label" for="chn_1_sub_serial">Serial Usb</label>
+          </div>
+          <div class="checkbox_group_sub">
+            <input type="checkbox" id="chn_1_sub_chn0">
+            <label class="checkbox_label" for="chn_1_sub_chn0">Uart 0</label>
+          </div>
+        </div>
+      </div>
+      <!--Subs-2on line-->
+      <div class="grid_channels" style="margin-top: 8px">
+        <!--Chn-0 Ports-->
+        <div class="grid_sub" id="chn_0_subs_line_2" style="margin-left: 30px">
+          <div class="checkbox_group_sub" id="chn_0_group_sub_wp0" style="display:none">
+            <input type="checkbox" id="chn_0_sub_wp0">
+            <label class="checkbox_label" for="chn_0_sub_wp0">W Port 0</label>
+          </div>
+          <div class="checkbox_group_sub" id="chn_0_group_sub_wp1" style="display:none">
+            <input type="checkbox" id="chn_0_sub_wp1">
+            <label class="checkbox_label" for="chn_0_sub_wp1">W Port 1</label>
+          </div>
+          <div class="checkbox_group_sub" id="chn_0_group_sub_wp2" style="display:none">
+            <input type="checkbox" id="chn_0_sub_wp2">
+            <label class="checkbox_label" for="chn_0_sub_wp2">W Port 2</label>
+          </div>
+          <div class="checkbox_group_sub" id="chn_0_group_sub_wp3" style="display:none">
+            <input type="checkbox" id="chn_0_sub_wp3">
+            <label class="checkbox_label" for="chn_0_sub_wp3">W Port 3</label>
+          </div>
+        </div>
+        <!--Chn-1 Ports-->
+        <div class="grid_sub" id="chn_1_subs_line_2" style="margin-left: 30px">
+          <div class="checkbox_group_sub" id="chn_1_group_sub_wp0" style="display:none">
+            <input type="checkbox" id="chn_1_sub_wp0">
+            <label class="checkbox_label" for="chn_1_sub_wp0">W Port 0</label>
+          </div>
+          <div class="checkbox_group_sub" id="chn_1_group_sub_wp1" style="display:none">
+            <input type="checkbox" id="chn_1_sub_wp1">
+            <label class="checkbox_label" for="chn_1_sub_wp1">W Port 1</label>
+          </div>
+          <div class="checkbox_group_sub" id="chn_1_group_sub_wp2" style="display:none">
+            <input type="checkbox" id="chn_1_sub_wp2">
+            <label class="checkbox_label" for="chn_1_sub_wp2">W Port 2</label>
+          </div>
+          <div class="checkbox_group_sub" id="chn_1_group_sub_wp3" style="display:none">
+            <input type="checkbox" id="chn_1_sub_wp3">
+            <label class="checkbox_label" for="chn_1_sub_wp3">W Port 3</label>
+          </div>
+        </div>
+      </div>
+      <!--Send frame titles-->
+      <div class="grid_channels"  style="margin-top: 14px">
+        <h3 class="title title_2">Inputs Alternate Frame</h3>
+        <h3 class="title title_2">Inputs Alternate Frame</h3>
+      </div>
+      <!--Input send frame Ascii-->
+      <div class="grid_channels" style="margin-top: 15px">
+        <!--CHN 0-->
+        <div class="input_gen" style="margin-top: 4px">
+          <h4 style="display: inline-block; margin-right: 10px">
+            Ascii
+          </h4>
+          <input type="text" class="input_data_send" id="chn_0_frame_ascii" maxlength="255">
+        </div>
+        <!--CHN 1-->
+        <div class="input_gen" style="margin-top: 4px">
+          <h4 style="display: inline-block; margin-right: 10px">
+            Ascii
+          </h4>
+          <input type="text" class="input_data_send" id="chn_1_frame_ascii" maxlength="255">
+        </div>
+      </div>
+      <!--Input send frame Hex-->
+      <div class="grid_channels" style="margin-top: 6px">
+        <!--CHN 0-->
+        <div class="input_gen" style="margin-top: 4px">
+          <h4 style="display: inline-block; margin-right: 15px">
+            Hex
+          </h4>
+          <input type="text" class="input_data_send" id="chn_0_frame_hex" maxlength="255">
+        </div>
+        <!--CHN 1-->
+        <div class="input_gen" style="margin-top: 4px">
+          <h4 style="display: inline-block; margin-right: 15px">
+            Hex
+          </h4>
+          <input type="text" class="input_data_send" id="chn_1_frame_hex" maxlength="255">
+        </div>
+      </div>
+      <!--Test / clear / select send frame-->
+      <div class="grid_channels" style="margin-top: 10px">
+        <!--Chn-0-->
+        <div class="grid_channels grid_channel">
+          <div>
+          </div>
+          <div>
+            <button type="button" id="btn_chn_0_test" class="btn btn_green" style="width: 80px; height: 32px">Test</button>
+            <button type="button" id="btn_chn_0_clear" class="btn btn_red" style="width: 80px; height: 32px; margin-left:10px">Clear</button>
+            <select class="input_data input_data_chn_right" id="chn_0_sel_input" style="width: 80px; margin-left:10px">
+              <option value="16">pin A</option>
+              <option value="17">pin B</option>
+              <option value="0" >0</option>
+              <option value="1" >1</option>
+              <option value="2" >2</option>
+              <option value="3" >3</option>
+              <option value="4" >4</option>
+              <option value="5" >5</option>
+              <option value="6" >6</option>
+              <option value="7" >7</option>
+              <option value="8" >8</option>
+              <option value="9" >9</option>
+              <option value="10" >10</option>
+              <option value="11" >11</option>
+              <option value="12" >12</option>
+              <option value="13" >13</option>
+              <option value="14" >14</option>
+              <option value="15" >15</option>
+              <option value="18" >Uart</option>
+            </select>
+          </div>
+        </div>
+        <!--Chn-1-->
+        <div class="grid_channels grid_channel">
+          <div>
+          </div>
+          <div style="margin-top: 0px">
+            <button type="button" id="btn_chn_1_test" class="btn btn_green" style="width: 85px; height: 32px">Test</button>
+            <button type="button" id="btn_chn_1_clear" class="btn btn_red" style="width: 85px; height: 32px; margin-left:10px">Clear</button>
+            <select class="input_data input_data_chn_right" id="chn_1_sel_input" style="width: 70px; margin-left:10px">
+              <option value="16">pin A</option>
+              <option value="17">pin B</option>
+              <option value="0" >0</option>
+              <option value="1" >1</option>
+              <option value="2" >2</option>
+              <option value="3" >3</option>
+              <option value="4" >4</option>
+              <option value="5" >5</option>
+              <option value="6" >6</option>
+              <option value="7" >7</option>
+              <option value="8" >8</option>
+              <option value="9" >9</option>
+              <option value="10" >10</option>
+              <option value="11" >11</option>
+              <option value="12" >12</option>
+              <option value="13" >13</option>
+              <option value="14" >14</option>
+              <option value="15" >15</option>
+              <option value="18" >Uart</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!--Button-->
+      <div style="margin-top: 56px">
+        <button type="button" id="btn_update" class="btn btn_grey" style="float: right; margin-right: 20px">Update Config</button>
+      </div>
+      <!--Footer-->
+      <div id="footer" style="display:none; height: 30px; width: 1328px;"></div>
+    <!--FI GRIDS ALL-->
+    </div>
+  <!--FI CONTAINER-->
+  </div>
+  <!--------------------------------------------------------------->
+  <!--CONTAINER WAIT-->
+  <div class="container" id="container_wait" style="display:none;">
+    <nav class="navbar">
+      <ul>
+        <li><h3>MultiBus</h3></li>
+      </ul>
+    </nav>
+    <div id="label_wait" class="label_w"></div>
+    <div id="loader" style="margin: auto;text-align: center; margin-top: 60px;"></div>
+  </div>
+  <!--MODAL-->
+  <div class="modal" style="display:none;">
+    <div class="modal-content">
+      <h3>Channels</h3>
+      <h1>No serial connection</h1>
+      <button type="button" class="btn btn_grey" style="margin-top: 24px" id="connect">Connect</button>
+    </div>
+  </div>
+  <!--------------------------------------------------------------->
+  <script src="script.js"></script>
+  <script src="channels.js"></script>
+</body>
+</html>
