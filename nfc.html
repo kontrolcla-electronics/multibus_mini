@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MultiBus Mini Nfc</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container" style="display:none;">
+    <nav class="navbar">
+      <ul>
+        <li><h3>MultiBus Mini <span id="navbar_model"></span></h3></li>
+      </ul>
+      <ul>
+        <!-- <li><h3 id="navbar_channels" ><a href="channels.html">Channels</a></h3></li> -->
+        <li><h3 id="navbar_channels" ><a href="index.html">Channels</a></h3></li>
+        <li><h3 id="navbar_wifi" style="display:none"><a href="wifi.html">Wifi</a></h3></li>
+        <li><h3 id="navbar_nfc" style="display:none"><a href="nfc.html" class="selected">Nfc</a></h3></li>
+        <li><h3 id="navbar_ir" style="display:none" ><a href="ir_test.html">Ir Learning</a></h3></li>
+      </ul>
+    </nav>
+    <h3 id="label_load_data" class="label_w"></h3>
+    <!--INICI GRIDS ALL-->
+    <div id="grids_all" style="display:none;">
+      <!--Chn titles-->
+      <div class="grid_channels" style="margin-top: 10px">
+        <h3 class="title">Channel 0</h3>
+        <h3 class="title">Channel 1</h3>
+      </div>
+      <!--Start and Speed-->
+      <div class="grid_channels" style="margin-top: 10px">
+        <div class="grid_nfc_2" style="margin-top: 6px">
+          <div class="input_gen">
+            <div class="input_label input_label_nfc">Auto Start</div>
+            <select class="input_data input_data_nfc" id="nfc_0_start">
+              <option value="0">Off</option>
+              <option value="1">On</option>
+            </select>
+          </div>
+          <div class="input_gen">
+            <div class="input_label input_label_nfc">Speed</div>
+            <select class="input_data input_data_nfc" id="nfc_0_speed">
+              <option value="0">Slow</option>
+              <option value="1">Normal</option>
+              <option value="2">Fast</option>
+              <option value="3">Max</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid_nfc_2" style="margin-top: 6px">
+          <div class="input_gen">
+            <div class="input_label input_label_nfc">Auto Start</div>
+            <select class="input_data input_data_nfc" id="nfc_1_start">
+              <option value="0">Off</option>
+              <option value="1">On</option>
+            </select>
+          </div>
+          <div class="input_gen">
+            <div class="input_label input_label_nfc">Speed</div>
+            <select class="input_data input_data_nfc" id="nfc_1_speed">
+              <option value="0">Slow</option>
+              <option value="1">Normal</option>
+              <option value="2">Fast</option>
+              <option value="3">Max</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!--Blocks read from/to-->
+      <div class="grid_channels" style="margin-top: 5px">
+        <div class="grid_nfc_2" style="margin-top: 6px">
+          <div class="input_gen">
+            <div class="input_label input_label_nfc">Read Block From</div>
+            <input type="text" class="input_data input_data_nfc" id="nfc_0_block_from" maxlength="2">
+            <div style="margin-left: 135px; color:grey; height:26px">hex/empty</div>
+          </div>
+          <div class="input_gen">
+            <div class="input_label input_label_nfc">Read Block To</div>
+            <input type="text" class="input_data input_data_nfc" id="nfc_0_block_to" maxlength="2">
+            <div style="margin-left: 135px; color:grey; height:26px">hex/empty</div>
+          </div>
+        </div>
+        <div class="grid_nfc_2" style="margin-top: 6px">
+          <div class="input_gen">
+            <div class="input_label input_label_nfc">Read Block From</div>
+            <input type="text" class="input_data input_data_nfc" id="nfc_1_block_from" maxlength="2">
+            <div style="margin-left: 135px; color:grey; height:26px">hex/empty</div>
+          </div>
+          <div class="input_gen">
+            <div class="input_label input_label_nfc">Read Block To</div>
+            <input type="text" class="input_data input_data_nfc" id="nfc_1_block_to" maxlength="2">
+            <div style="margin-left: 135px; color:grey; height:26px">hex/empty</div>
+          </div>
+        </div>
+      </div>
+      <!--Keys-->
+      <div class="grid_channels" style="margin-top: 5px">
+        <div class="input_gen"  style="margin-top: 6px">
+          <div class="input_label input_label_nfc">Auth Key A</div>
+          <input type="text" class="input_data input_data_nfc_key" id="nfc_0_auth_key" maxlength="100">
+          <div style="margin-left: 140px; color:grey; height:26px">default value: FF FF FF FF FF FF</div>
+        </div>
+
+        <div class="input_gen"  style="margin-top: 6px">
+          <div class="input_label input_label_nfc">Auth Key A</div>
+          <input type="text" class="input_data input_data_nfc_key" id="nfc_1_auth_key" maxlength="100">
+          <div style="margin-left: 140px; color:grey; height:26px">default value: FF FF FF FF FF FF</div>
+        </div>
+      </div>
+      <!--Subs titles-->
+      <div class="grid_channels" style="margin-top: 56px">
+        <h3 class="title title_2 title_3">Channel 0 - Nfc Subscriptions</h3>
+        <h3 class="title title_2 title_3">Channel 1 - Nfc Subscriptions</h3>
+      </div>
+      <!--Subs-1st line-->
+      <div class="grid_channels" style="margin-top: 8px">
+        <!--Chn-0 Ports-->
+        <div class="grid_sub_nfc" id="nfc_0_subs_line_1" style="margin-left: 30px">
+          <div class="checkbox_group_sub">
+            <input type="checkbox" id="nfc_0_sub_serial">
+            <label class="checkbox_label" for="nfc_0_sub_serial">Serial Usb</label>
+          </div>
+          <div class="checkbox_group_sub">
+            <input type="checkbox" id="nfc_0_sub_chn1">
+            <label class="checkbox_label" for="nfc_0_sub_chn1">Uart 1</label>
+          </div>
+        </div>
+        <!--Chn-1 Ports-->
+        <div class="grid_sub_nfc" id="nfc_1_subs_line_1" style="margin-left: 30px">
+          <div class="checkbox_group_sub">
+            <input type="checkbox" id="nfc_1_sub_serial">
+            <label class="checkbox_label" for="nfc_1_sub_serial">Serial Usb</label>
+          </div>
+          <div class="checkbox_group_sub">
+            <input type="checkbox" id="nfc_1_sub_chn0">
+            <label class="checkbox_label" for="nfc_1_sub_chn0">Uart 0</label>
+          </div>
+        </div>
+      </div>
+      <!--Subs-2on line-->
+      <div class="grid_channels" style="margin-top: 8px">
+        <!--Chn-0 Ports-->
+        <div class="grid_sub_nfc" id="nfc_0_subs_line_2" style="margin-left: 30px">
+          <div class="checkbox_group_sub" id="nfc_0_group_sub_wp0" style="display:none">
+            <input type="checkbox" id="nfc_0_sub_wp0">
+            <label class="checkbox_label" for="nfc_0_sub_wp0">W Port 0</label>
+          </div>
+          <div class="checkbox_group_sub" id="nfc_0_group_sub_wp1" style="display:none">
+            <input type="checkbox" id="nfc_0_sub_wp1">
+            <label class="checkbox_label" for="nfc_0_sub_wp1">W Port 1</label>
+          </div>
+          <div class="checkbox_group_sub" id="nfc_0_group_sub_wp2" style="display:none">
+            <input type="checkbox" id="nfc_0_sub_wp2">
+            <label class="checkbox_label" for="nfc_0_sub_wp2">W Port 2</label>
+          </div>
+          <div class="checkbox_group_sub" id="nfc_0_group_sub_wp3" style="display:none">
+            <input type="checkbox" id="nfc_0_sub_wp3">
+            <label class="checkbox_label" for="nfc_0_sub_wp3">W Port 3</label>
+          </div>
+        </div>
+        <!--Chn-1 Ports-->
+        <div class="grid_sub_nfc" id="nfc_1_subs_line_2" style="margin-left: 30px">
+          <div class="checkbox_group_sub" id="nfc_1_group_sub_wp0" style="display:none">
+            <input type="checkbox" id="nfc_1_sub_wp0">
+            <label class="checkbox_label" for="nfc_1_sub_wp0">W Port 0</label>
+          </div>
+          <div class="checkbox_group_sub" id="nfc_1_group_sub_wp1" style="display:none">
+            <input type="checkbox" id="nfc_1_sub_wp1">
+            <label class="checkbox_label" for="nfc_1_sub_wp1">W Port 1</label>
+          </div>
+          <div class="checkbox_group_sub" id="nfc_1_group_sub_wp2" style="display:none">
+            <input type="checkbox" id="nfc_1_sub_wp2">
+            <label class="checkbox_label" for="nfc_1_sub_wp2">W Port 2</label>
+          </div>
+          <div class="checkbox_group_sub" id="nfc_1_group_sub_wp3" style="display:none">
+            <input type="checkbox" id="nfc_1_sub_wp3">
+            <label class="checkbox_label" for="nfc_1_sub_wp3">W Port 3</label>
+          </div>
+        </div>
+      </div>
+      <!--Button-->
+      <div style="margin-top: 155px">
+        <button type="button" id="btn_update" class="btn btn_grey" style="float: right; margin-right: 20px">Update Config</button>
+      </div>
+      <!--Footer-->
+      <div id="footer" style="display:none; height: 30px; width: 1328px;"></div>
+    <!--FI GRIDS ALL-->
+    </div>
+  <!--FI CONTAINER-->
+  </div>
+  <!--------------------------------------------------------------->
+  <!--CONTAINER WAIT-->
+  <div class="container" id="container_wait" style="display:none;">
+    <nav class="navbar">
+      <ul>
+        <li><h3>MultiBus</h3></li>
+      </ul>
+    </nav>
+    <div id="label_wait" class="label_w"></div>
+    <div id="loader" style="margin: auto;text-align: center; margin-top: 60px;"></div>
+  </div>
+  <!--MODAL-->
+  <div class="modal" style="display:none;">
+    <div class="modal-content">
+      <h3>Nfc</h3>
+      <h1>No serial connection</h1>
+      <button type="button" class="btn btn_grey" style="margin-top: 24px" id="connect">Connect</button>
+    </div>
+  </div>
+  <!--------------------------------------------------------------->
+  <script src="script.js"></script>
+  <script src="nfc.js"></script>
+</body>
+</html>
